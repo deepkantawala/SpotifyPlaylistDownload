@@ -8,14 +8,14 @@ import requests
 #                               'code': 'AQDkg81SuMEdKU6GVfehCPEi1MPct2iBBTr9yxcQEC4jpzVBC1DhMllkNSx09LM_BSRwek4ea-8Ry2l9IpfM-tEApirzxf1LxMJc_GhRCiK-5uhTNdRj9akDauDttPfy2LL3TM4AoaGSRwnswghUCTuHR35OoELgZZ6pLWd64OiP1k0',
 #                               'redirect_uri': 'http://localhost:12345/callback', 'grant_type': 'authorization_code'},
 #                           headers={'Authorization': 'Basic ' + base64.b64encode(
-#                               b'9e8319b9e57f42d5b5ba99356cec57fd:8ad463889ed946e0ae2847059fe9e9b3').decode('ascii')})
+#                               b'xxxxxxxxxxxxxxxx:xxxxxxxxxxxxxxxxxx').decode('ascii')})
 # token = json.loads(bytes.decode(token_api.content, 'utf-8'))
 # access_token = token["access_token"]
 # refresh_token = token["refresh_token"]
 # refresh_token_api = requests.post(url='https://accounts.spotify.com/api/token',
 #                                   data={'refresh_token': refresh_token, 'grant_type': 'refresh_token'},
 #                                   headers={'Authorization': 'Basic ' + base64.b64encode(
-#                                       b'9e8319b9e57f42d5b5ba99356cec57fd:8ad463889ed946e0ae2847059fe9e9b3').decode(
+#                                       b'xxxxxxxxxxxxxxxxx:xxxxxxxxxxxxxxxxx').decode(
 #                                       'ascii')})
 # token = json.loads(bytes.decode(refresh_token_api.content, 'utf-8'))
 # print(token)
