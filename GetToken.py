@@ -37,8 +37,8 @@ class GetToken:
 
 
 
-id = "b0b98946ddda49f793801e7a158c88a0"
-secrete = "628d3aab1e6749b8aec3b4d5f960bb93"
+id = "xxx"
+secrete = "xxx"
 uri = "https://api.spotify.com/v1/DeepKantawala/tracks"
 
 token_url = "https://accounts.spotify.com/api/token"
