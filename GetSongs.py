@@ -8,12 +8,13 @@ class GetSongs:
 
     def fetch_songs_from_playlist(self, playlist_url):
         playlist_id = playlist_url.split('?')[0].split('/')[-1]
-        custom_url = f'https://api.spotify.com/v1/playlists/{playlist_id}/tracks?offset=0&limit=100'
+        custom_url = f'https://api.spotify.com/v1/playlists/{playlist_id}/tracks?market=ES&fields=items(track(name%2Cartists(name)))%2Cnext&offset=0&limit=100'
         songs = []
         while True:
             a = requests.get(url=custom_url,
                              headers={"Authorization": f'Bearer {self.token}'})
             tracks_response = a.json()
+            print(tracks_response["next"])
             for i in tracks_response["items"]:
                 tmp = {}
                 tmp["song"] = i["track"]["name"]

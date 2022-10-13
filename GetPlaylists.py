@@ -24,10 +24,10 @@ class GetPlaylists:
                                     'Authorization': f'Bearer {self.token}'})
         response = json.loads(bytes.decode(playlist.content, 'utf-8'))
         playlists_list = []
-        for i in response["items"]:
-            playlists_list.append({"name": i["name"], "link": i["tracks"]["href"]})
-        print(playlists_list)
-        return playlists_list
+        # for i in response["items"]:
+        #     playlists_list.append({"name": i["name"], "link": i["tracks"]["href"]})
+        print(response)
+        return response
 
     def start_fetch_playlist(self):
         return self.get_all_uesrs_playlists()
