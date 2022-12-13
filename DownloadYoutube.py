@@ -1,7 +1,17 @@
 import pytube as pt
+import os
 
 
 class GetYTSongs:
+    def __init__(self, path):
+        self.path = path
+        self.create_path()
+
+    def create_path(self):
+        tmp = self.path.rstrip('/').split('/')
+        for i in range(0, len(tmp)-1):
+            if not os.path.exists('/'.join(tmp[:i+1])):
+                os.mkdir('/'.join(tmp[:i+1]))
 
     def pytube_obj_to_dict(self, obj):
         """
@@ -66,13 +76,13 @@ class GetYTSongs:
                     yt = pt.YouTube(url=url_dict[i]['first_url'])
                     yt.streams.filter(only_audio=True)
                     song = yt.streams.get_highest_resolution().download(
-                        filename=f"""D:/songs/liked/{url_dict[i]['name'].replace(" ", "").replace('"', '').replace('/', '')}.mp3""")
+                        filename=f"""{self.path.strip('/')}/{url_dict[i]['name'].replace(" ", "").replace('"', '').replace('/', '')}.mp3""")
                     print(url_dict[i]['name'], " Downloaded successfully!!")
                 except Exception as e:
                     yt = pt.YouTube(url=url_dict[i]['alt_url'])
                     yt.streams.filter(only_audio=True)
                     song = yt.streams.get_highest_resolution().download(
-                        filename=f"""D:/songs/liked/{url_dict[i]['name'].replace(" ", "").replace('"', '').replace('/', '')}.mp3""")
+                        filename=f"""{self.path.strip('/')}/{url_dict[i]['name'].replace(" ", "").replace('"', '').replace('/', '')}.mp3""")
                     print(url_dict[i]['name'], " Downloaded successfully with alt url!!")
             except Exception as e:
                 print(e)
