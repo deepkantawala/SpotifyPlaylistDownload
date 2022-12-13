@@ -2,10 +2,10 @@ from GetToken import GetToken
 from GetSongs import GetSongs
 import DownloadYoutube as DY
 
-id = "XXX"
-secret = "XXX"
+id = "xxxxxxxxxxxxxxxxxx"
+secret = "xxxxxxxxxxxxxxxxxx"
 # playlist_url = input("Playlist Link: ")
-playlist_url = "0cux1Vcmv7TR4mUcEMmbve?si=3dcae81f794d4202"
+playlist_url = "https://open.spotify.com/playlist/4a40bfbdBAbJDtQDGoNuhR?si=f26aa89c79314d95"
 gt = GetToken(id, secret)
 print("Starting")
 token = gt.start()
@@ -18,5 +18,3 @@ else:
     print(all_songs)
     gs = DY.GetYTSongs()
     gs.start(all_songs)
-
-# https://open.spotify.com/playlist/0cux1Vcmv7TR4mUcEMmbve?si=f2131935322f483b

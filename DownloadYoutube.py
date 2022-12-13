@@ -21,11 +21,11 @@ class GetYTSongs:
         temp_dict = {}
         for i in range(0, len(res)):
             b = res[i]
-            print(b)
+            # print(b)
             song = b['song']
             artist = b['artist']
-            temp_dict[i] = f"{song} by {artist}"
-            print(temp_dict)
+            temp_dict[i] = f"{song} {artist}"
+            # print(temp_dict)
         return temp_dict
 
     def map_songs_to_url(self, songs_query):
@@ -64,15 +64,18 @@ class GetYTSongs:
             try:
                 try:
                     yt = pt.YouTube(url=url_dict[i]['first_url'])
-                    yt.streams.filter(file_extension="mp3")
-                    a = yt.streams.get_highest_resolution().download(filename=f"C:/songs/{url_dict[i]['name']}.mp3")
+                    yt.streams.filter(only_audio=True)
+                    song = yt.streams.get_highest_resolution().download(
+                        filename=f"""D:/songs/liked/{url_dict[i]['name'].replace(" ", "").replace('"', '').replace('/', '')}.mp3""")
                     print(url_dict[i]['name'], " Downloaded successfully!!")
-                except:
+                except Exception as e:
                     yt = pt.YouTube(url=url_dict[i]['alt_url'])
-                    yt.streams.filter(file_extension="mp3")
-                    a = yt.streams.get_highest_resolution().download(filename=f"C:/songs/{url_dict[i]['name']}.mp3")
+                    yt.streams.filter(only_audio=True)
+                    song = yt.streams.get_highest_resolution().download(
+                        filename=f"""D:/songs/liked/{url_dict[i]['name'].replace(" ", "").replace('"', '').replace('/', '')}.mp3""")
                     print(url_dict[i]['name'], " Downloaded successfully with alt url!!")
-            except:
+            except Exception as e:
+                print(e)
                 print(f"error while downloading {url_dict[i]['name']}")
 
     def start(self, spotify_dict):
@@ -86,4 +89,4 @@ class GetYTSongs:
         print("Executing map_songs_to_url")
         url_query = self.map_songs_to_url(query)
         print("executing download_song")
-        final_download = self.download_song(url_query)
+        self.download_song(url_query)
