@@ -23,9 +23,6 @@ class GetPlaylists:
                                 headers={
                                     'Authorization': f'Bearer {self.token}'})
         response = json.loads(bytes.decode(playlist.content, 'utf-8'))
-        playlists_list = []
-        # for i in response["items"]:
-        #     playlists_list.append({"name": i["name"], "link": i["tracks"]["href"]})
         print(response)
         return response
 

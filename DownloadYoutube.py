@@ -75,13 +75,13 @@ class GetYTSongs:
                 try:
                     yt = pt.YouTube(url=url_dict[i]['first_url'])
                     yt.streams.filter(only_audio=True)
-                    song = yt.streams.get_highest_resolution().download(
+                    yt.streams.get_highest_resolution().download(
                         filename=f"""{self.path.strip('/')}/{url_dict[i]['name'].replace(" ", "").replace('"', '').replace('/', '')}.mp3""")
                     print(url_dict[i]['name'], " Downloaded successfully!!")
                 except Exception as e:
                     yt = pt.YouTube(url=url_dict[i]['alt_url'])
                     yt.streams.filter(only_audio=True)
-                    song = yt.streams.get_highest_resolution().download(
+                    yt.streams.get_highest_resolution().download(
                         filename=f"""{self.path.strip('/')}/{url_dict[i]['name'].replace(" ", "").replace('"', '').replace('/', '')}.mp3""")
                     print(url_dict[i]['name'], " Downloaded successfully with alt url!!")
             except Exception as e:
