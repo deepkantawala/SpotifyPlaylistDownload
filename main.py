@@ -12,7 +12,6 @@ token = gt.start()
 if token is None:
     print("Unauthorised, make sure you save the playlist to your library")
 else:
-    # print("Token is:", token)
     gs = GetSongs(token, playlist_url)
     all_songs = gs.start_get_songs()
     print(all_songs)
